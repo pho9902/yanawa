@@ -1,8 +1,7 @@
-import styles from "@/styles/main.module.scss";
+import styles from "@/styles/Main.module.scss";
 import temp from "@/pages/api/hello";
 
 export default function Main() {
-  console.log(process.env.NEXT_PUBLIC_APIKEY);
   const array = [
     {
       title: "test1",
@@ -36,37 +35,36 @@ export default function Main() {
 
   return (
     <div className={styles.wrap}>
-      <button onClick={() => temp()}>adsf </button>
-      <div>
-        <label>
+      <div className={styles.filterBox}>
+        <label className={styles.checkboxDiv}>
           운동
           <input
             type="checkbox"
             onChange={({ target: { checked } }) => onChange(checked)}
           />
         </label>
-        <label>
+        <label className={styles.checkboxDiv}>
           스터디
           <input
             type="checkbox"
             onChange={({ target: { checked } }) => onChange(checked)}
           />
         </label>
-        <label>
+        <label className={styles.checkboxDiv}>
           주말
           <input
             type="checkbox"
             onChange={({ target: { checked } }) => onChange(checked)}
           />
         </label>
-        <label>
+        <label className={styles.checkboxDiv}>
           평일
           <input
             type="checkbox"
             onChange={({ target: { checked } }) => onChange(checked)}
           />
         </label>
-        <label>
+        <label className={styles.checkboxDiv}>
           온라인
           <input
             type="checkbox"
@@ -74,6 +72,8 @@ export default function Main() {
           />
         </label>
       </div>
+
+      <div></div>
       {array.map((el, idx) => {
         return (
           <div key={idx}>

@@ -1,3 +1,9 @@
 .wrap {
   border: 1px solid red;
+  margin: 0 auto;
+
+  .banner {
+    border: 1px solid blue;
+    width: 100vw;
+  }
 }

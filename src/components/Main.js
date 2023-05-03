@@ -1,5 +1,7 @@
 import styles from "@/styles/Main.module.scss";
 import temp from "@/pages/api/hello";
+import { useEffect } from "react";
+import { checkQueryString } from "@/utils/checkQS";
 
 export default function Main() {
   const array = [
@@ -32,6 +34,10 @@ export default function Main() {
     console.log(state);
     return !state;
   };
+
+  useEffect(() => {
+    checkQueryString();
+  }, []);
 
   return (
     <div className={styles.wrap}>

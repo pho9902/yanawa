@@ -1,3 +1,3 @@
 export function checkQueryString() {
-  console.log("ㅎㅇ");
+  //   console.log("ㅎㅇ");
 }

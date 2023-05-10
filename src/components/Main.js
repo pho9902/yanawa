@@ -2,6 +2,7 @@ import styles from "@/styles/Main.module.scss";
 import { getPosts } from "@/api/getList";
 import { useEffect, useState } from "react";
 import { checkQueryString } from "@/utils/checkQS";
+import { auth } from "@/fb/firebaseConfig";
 
 export default function Main() {
   const [list, setList] = useState();
@@ -17,6 +18,7 @@ export default function Main() {
   useEffect(() => {
     checkQueryString();
     getData();
+    // console.log(auth.)
   }, []);
 
   return (

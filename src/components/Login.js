@@ -35,11 +35,19 @@ export default function Login() {
 
   return (
     <div className={styles.wrap}>
-      <div>여러 인증된 플랫폼의 회원정보로 로그인하세요</div>
+      <div className={styles.loginbox}>
+        여러 인증된 플랫폼의 회원정보로 로그인하세요
+      </div>
       <div className={styles.logoBox}>
-        <div onClick={handleGoogleLogin}>구글로고</div>
-        <div onClick={handleFacebookLogin}>페북로고</div>
-        <div onClick={handleTwitterLogin}>트위터로고</div>
+        <div className={styles.logo} onClick={handleGoogleLogin}>
+          구글로고
+        </div>
+        <div className={styles.logo} onClick={handleFacebookLogin}>
+          페북로고
+        </div>
+        <div className={styles.logo} onClick={handleTwitterLogin}>
+          트위터로고
+        </div>
       </div>
     </div>
   );

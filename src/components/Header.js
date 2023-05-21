@@ -6,6 +6,7 @@ export default function Header() {
     <div className={styles.wrap}>
       Header
       <Link href={{ pathname: "login" }}>로그인</Link>
+      <Link href={{ pathname: "post" }}>게시글 테스트</Link>
     </div>
   );
 }

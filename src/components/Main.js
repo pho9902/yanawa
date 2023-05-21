@@ -1,5 +1,5 @@
 import styles from "@/styles/Main.module.scss";
-import { getPosts } from "@/api/getList";
+import { getPosts, addPost } from "@/api/getList";
 import { useEffect, useState } from "react";
 import { checkQueryString } from "@/utils/checkQS";
 import { auth } from "@/fb/firebaseConfig";
@@ -12,13 +12,13 @@ export default function Main() {
   };
 
   async function getData() {
+    console.log(getPosts());
     setList(await getPosts());
   }
 
   useEffect(() => {
     checkQueryString();
     getData();
-    // console.log(auth.)
   }, []);
 
   return (
@@ -59,17 +59,18 @@ export default function Main() {
             onChange={({ target: { checked } }) => onChange(checked)}
           />
         </label>
+        <button onClick={addPost}>추가테스트</button>
       </div>
 
       <div>
         {!list ? (
           <div></div>
         ) : (
-          list.map((el, idx) => {
+          Object.keys(list).map((el, idx) => {
             return (
               <div key={idx}>
-                {el.title} 작성자 : {el.author}
-                {el.tag.map((ele, index) => {
+                {list[el].title} 작성자 : {list[el].author}
+                {list[el].tag.map((ele, index) => {
                   return <div key={index}>{ele}</div>;
                 })}
               </div>

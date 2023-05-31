@@ -1,3 +1,4 @@
+import { setDoc } from "firebase/firestore";
 import { getDoc, doc, db } from "./";
 // import { firestore } from "firebase";
 
@@ -8,24 +9,17 @@ async function instance(table) {
   // console.log("docSnap.data().post :>> ", docSnap.data().post);
   return docSnap.data();
 }
-export function getPosts() {
-  return instance("group");
+export async function getPosts() {
+  const result = await instance("group");
+  return result.posts;
 }
 
 export function getTags() {
   return instance("tag");
 }
 
-export async function addPost() {
-  // const group = .collection("website");
-  doc(db, "website", "group").set({
-    2: {
-      title: "testeteststtestest",
-      author: "박현우",
-      tag: [1, 4, 7],
-      contend: "description",
-      imgUrl: "www.test.com",
-      date: "230510",
-    },
-  });
+export async function addPost(post) {
+  const array = await getPosts();
+
+  setDoc(doc(db, "website", "group"), { posts: [...array, post] });
 }

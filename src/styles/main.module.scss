@@ -6,15 +6,16 @@
   .filterBox {
     margin: 10px;
     border-radius: 10px;
-    height: 100px;
+    // height: 100px;
     width: 50vw;
     box-shadow: 0 5px 10px lightgray;
-  }
-
-  .checkboxDiv {
-    border: 1px solid lightgray;
-    border-radius: 6px;
-    margin: 10px;
-    padding: 2px;
+    display: flex;
   }
 }
+
+// .checkboxDiv {
+//   border: 1px solid lightgray;
+//   border-radius: 6px;
+//   margin: 10px;
+//   padding: 2px;
+// }

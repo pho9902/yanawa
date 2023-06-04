@@ -1,12 +1,10 @@
 import { setDoc } from "firebase/firestore";
 import { getDoc, doc, db } from "./";
-// import { firestore } from "firebase";
 
 async function instance(table) {
   const docRef = doc(db, "website", table);
   const docSnap = await getDoc(docRef);
 
-  // console.log("docSnap.data().post :>> ", docSnap.data().post);
   return docSnap.data();
 }
 export async function getPosts() {

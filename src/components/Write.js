@@ -49,13 +49,6 @@ export default function Write() {
         title,
       });
     }
-    // postNo modalNo 파이어스토어 인덱스로 통일해야됨
-    // 메인 페이지 필터검색 구현해야됨
-    // 마이페이지 구현
-    // 게시글 삭제 수정 구현 하며 ㄴ끝
-    // 이미지 적용
-
-    // location.href = `/?postNo=${router.query.pid}`;
   }
   const onChange = (state, id, isSub) => {
     if (state) setFilter([...filter, isSub ? { subTag: id } : { tag: id }]);
@@ -105,3 +98,11 @@ export default function Write() {
     </div>
   );
 }
+
+// postNo modalNo 파이어스토어 인덱스로 통일해야됨
+// 메인 페이지 필터검색 구현해야됨
+// 마이페이지 구현
+// 게시글 삭제 수정 구현 하며 ㄴ끝
+// 이미지 적용
+
+// location.href = `/?postNo=${router.query.pid}`;

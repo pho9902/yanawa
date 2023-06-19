@@ -1,29 +1,20 @@
 import styles from "@/styles/Main.module.scss";
-import { getPosts, addPost } from "@/api/getList";
+import { getPosts } from "@/api/getList";
 import { useEffect, useState } from "react";
-import { tagArr } from "@/public/tag";
 import Post from "./Post";
-import CheckBox from "./CheckBox";
 import Modal from "./Modal";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { getUserInfo } from "@/utils/getUserInfo";
-
-import { auth } from "@/fb/firebaseConfig";
-import { signOut } from "firebase/auth";
+import { TfiPencilAlt } from "react-icons/tfi";
 
 export default function Main() {
   const [list, setList] = useState();
   const [modalNo, setModalNo] = useState("-1");
   const [addPostNum, setAddPostNum] = useState(0);
   const [userInfo, setUserInfo] = useState();
-  const checkedList = [];
+  const [currentPost, setCurrentPost] = useState();
   const router = useRouter();
-
-  const onChange = (state, id) => {
-    if (state) console.log("id :>> ", id); //Todo filter logic
-    return !state;
-  };
 
   async function getData() {
     setList(await getPosts());
@@ -54,70 +45,46 @@ export default function Main() {
     if (list) setAddPostNum(parseInt(list[list.length - 1].postNo) + 1);
   }, [list]);
 
-  function onClickLogOut() {
-    signOut(auth)
-      .then((res) => {
-        if (window.confirm("로그아웃 하시겠습니까?")) moveMaintWithReload();
-      })
-
-      .catch((err) => console.log(err));
-  }
-
   return (
-    <>
-      <div className={styles.wrap}>
-        <button onClick={onClickLogOut}>로그아웃</button>
-        <div className={styles.filterBox}>
-          <div className={styles.subTagBox}>
-            {tagArr.subTag.map((tag, idx) => {
-              return (
-                <CheckBox
-                  key={idx}
-                  idx={idx}
-                  tag={tag}
-                  isSub={true}
-                  onChange={onChange}
-                />
-              );
-            })}
-          </div>
-          <div className={styles.mainTagBox}>
-            {tagArr.tag.map((tag, idx) => {
-              return (
-                <CheckBox
-                  key={idx}
-                  idx={idx}
-                  tag={tag}
-                  isSub={false}
-                  onChange={onChange}
-                />
-              );
-            })}
-          </div>
-          {userInfo ? (
-            <Link href={{ pathname: `write/${addPostNum}` }}>추가테스트</Link>
-          ) : (
-            <></>
-          )}
-        </div>
-
-        <div>
-          {!list ? (
-            <div></div>
-          ) : (
-            <Post
-              setModalNo={setModalNo}
-              list={list}
-              checkedList={checkedList}
-            />
-          )}
-        </div>
+    <div className={styles.wrap}>
+      <div className={styles.info}>다양한 모임 정보를 확인해보세요</div>
+      <div className={styles.container}>
+        {!list ? (
+          <div></div>
+        ) : (
+          <Post
+            setModalNo={setModalNo}
+            list={list}
+            setCurrentPost={setCurrentPost}
+          />
+        )}
       </div>
+
+      {userInfo ? (
+        <Link
+          className={styles.addLink}
+          href={{ pathname: `write/${addPostNum}` }}
+        >
+          <TfiPencilAlt /> 글쓰기
+        </Link>
+      ) : (
+        <span
+          onClick={() => {
+            if (confirm("로그인 후 이용가능합니다, 로그인 하시겠습니까?"))
+              window.location.href = "/login";
+          }}
+          className={styles.addSpan}
+        >
+          <TfiPencilAlt />
+          글쓰기
+        </span>
+      )}
+
       {modalNo === "-1" ? (
         <></>
       ) : (
-        <Modal list={list[modalNo]} setModalNo={setModalNo} />
+        <Modal setModalNo={setModalNo} currentPost={currentPost} />
       )}
-    </>
+    </div>
   );
 }

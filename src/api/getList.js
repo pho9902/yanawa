@@ -19,5 +19,7 @@ export function getTags() {
 export async function addPost(post) {
   const array = await getPosts();
 
-  setDoc(doc(db, "website", "group"), { posts: [...array, post] });
+  setDoc(doc(db, "website", "group"), { posts: [...array, post] }).then(
+    (res) => (location.href = "/")
+  );
 }

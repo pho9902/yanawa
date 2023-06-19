@@ -1,3 +1,83 @@
 .wrap {
-  border: 10px solid;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px lightgray;
+  padding: 10px;
+  text-align: center;
+  margin: 7vw 7vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.titleInput {
+  border: 0px solid;
+  margin: 6px;
+  border-radius: 5px;
+  height: 15px;
+  font-size: 25px;
+  height: 50px;
+
+  &:focus {
+    border: 1px solid gray;
+    outline: none;
+  }
+}
+.contendInput {
+  height: 50%;
+  border: 0px solid;
+  border-radius: 15px;
+  margin: 15px 0;
+  &:focus {
+    border: 1px solid gray;
+    outline: none;
+  }
+}
+
+.filterBox {
+  border: 2px solid #f87d09;
+  border-radius: 12px;
+  display: flex;
+  margin: 10px;
+
+  .subTagBox {
+    margin: 10px;
+    padding: 10px;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 8px;
+  }
+
+  .mainTagBox {
+    margin: 10px;
+    padding: 10px;
+    border-left: 1px solid #f87d09;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 8px;
+  }
+}
+
+.label {
+  background-color: lightgray;
+  border-radius: 5px;
+  margin: 0 10px;
+  padding: 1px;
+  display: flex;
+  width: fit-content;
+  &:hover {
+    filter: brightness(90%);
+  }
+}
+
+.confirmBtn {
+  border-radius: 9px;
+  background-color: lightgray;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 15px;
+
+  &:hover {
+    filter: brightness(90%);
+  }
 }

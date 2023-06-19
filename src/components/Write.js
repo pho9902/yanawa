@@ -37,7 +37,6 @@ export default function Write() {
 
     if (title === "") alert("제목을 입력하세요");
     else if (contend === "") alert("내용을 입력하세요");
-    else if (filter === []) alert("최소 1개 이상의 태그를 선택하세요");
     else {
       addPost({
         author: userInfo.displayName,
@@ -59,13 +58,11 @@ export default function Write() {
 
   return (
     <div className={styles.wrap}>
-      <input placeholder="제목" onChange={(e) => setTitle(e.target.value)} />
-      <div className={styles.description}>
-        <input
-          placeholder="내용"
-          onChange={(e) => setContend(e.target.value)}
-        />
-      </div>
+      <input
+        className={styles.titleInput}
+        placeholder="제목"
+        onChange={(e) => setTitle(e.target.value)}
+      />
       <div className={styles.filterBox}>
         <div className={styles.subTagBox}>
           {tagArr.subTag.map((tag, idx) => {
@@ -94,15 +91,15 @@ export default function Write() {
           })}
         </div>
       </div>
-      <button onClick={onClickConfirm}> confirm</button>
+      <input
+        className={styles.contendInput}
+        placeholder="내용"
+        onChange={(e) => setContend(e.target.value)}
+      />
+
+      <span className={styles.confirmBtn} onClick={onClickConfirm}>
+        글쓰기
+      </span>
     </div>
   );
 }
-
-// postNo modalNo 파이어스토어 인덱스로 통일해야됨
-// 메인 페이지 필터검색 구현해야됨
-// 마이페이지 구현
-// 게시글 삭제 수정 구현 하며 ㄴ끝
-// 이미지 적용
-
-// location.href = `/?postNo=${router.query.pid}`;

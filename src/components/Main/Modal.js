@@ -1,6 +1,8 @@
 import styles from "@/styles/Modal.module.scss";
+import Link from "next/link";
+import { GrClose } from "react-icons/gr";
 
-export default function Modal({ list, setModalNo }) {
+export default function Modal({ setModalNo, currentPost }) {
   function eventPreventer(e) {
     e.stopPropagation();
   }
@@ -9,13 +11,17 @@ export default function Modal({ list, setModalNo }) {
     setModalNo("-1");
   }
 
-  console.log(list);
-
   return (
     <div className={styles.wrap} onClick={closeModal}>
-      <span onClick={closeModal}>XXXXX</span>
+      <Link href="/" onClick={closeModal}>
+        <GrClose className={styles.closeBtn} />
+      </Link>
       <div className={styles.box} onClick={eventPreventer}>
-        {/* {list.contend} */}
+        <div className={styles.modalHeader}>
+          <h2>{currentPost.title}</h2>
+          <span className={styles.author}>author : {currentPost.author}</span>
+        </div>
+        <span className={styles.contend}>{currentPost.contend}</span>
       </div>
     </div>
   );

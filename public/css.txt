@@ -5,6 +5,7 @@
   text-align: center;
   margin: 7vw 7vh;
   height: 100vh;
+  
 }
 
 .loginbox {
@@ -34,5 +35,8 @@
   height: 50px;
   border-radius: 50%;
   margin: 0 auto;
+  border: 3px solid;
   cursor: pointer;
+  
+
 }

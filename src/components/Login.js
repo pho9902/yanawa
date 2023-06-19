@@ -25,7 +25,7 @@ export default function Login() {
     }
 
     signInWithPopup(auth, provider)
-      .then((res) => (location.href = "/"))
+      .then((_) => (location.href = "/"))
       .catch((err) => alert(err));
   }
 
@@ -39,19 +39,13 @@ export default function Login() {
           className={styles.logo}
           onClick={() => handleSocialLogin("google")}
         >
-          구글로고
+          <img src="/google.png" />
         </div>
         <div
           className={styles.logo}
           onClick={() => handleSocialLogin("facebook")}
         >
-          페북로고
-        </div>
-        <div
-          className={styles.logo}
-          onClick={() => handleSocialLogin("twitter")}
-        >
-          트위터로고
+          <img src="/facebook.png" />
         </div>
       </div>
     </div>

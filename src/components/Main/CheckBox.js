@@ -1,14 +1,14 @@
-import styles from "@/styles/CheckBox.module.scss";
+import styles from "@/styles/Write.module.scss";
 
 export default function CheckBox({ idx, tag, onChange, isSub }) {
   return (
-    <label className={styles.label}>
-      {tag}
+    <div className={styles.label}>
+      <div>{tag}</div>
       <input
         type="checkbox"
         id={idx}
         onChange={({ target: { checked, id } }) => onChange(checked, id, isSub)}
       />
-    </label>
+    </div>
   );
 }

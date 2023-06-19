@@ -1,0 +1,55 @@
+
+import styles from "@/styles/Login.module.scss";
+import {
+  FacebookAuthProvider,
+  GoogleAuthProvider,
+  TwitterAuthProvider,
+  signInWithPopup,
+} from "@firebase/auth";
+import { auth } from "@/fb/firebaseConfig";
+import { useState } from "react";
+
+export default function Login() {
+  const [userInfo, setUserInfo] = useState();
+
+  async function handleTwitterLogin() {
+    const provider = new TwitterAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
+  async function handleGoogleLogin() {
+    const provider = new GoogleAuthProvider(); // provider를 구글로 설정
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err)); // popup을 이용한 signup
+  }
+
+  async function handleFacebookLogin() {
+    const provider = new FacebookAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
+
+  return (
+    <div className={styles.wrap}>
+      <div className={styles.loginbox}>
+        여러 인증된 플랫폼의 회원정보로 로그인하세요
+      </div>
+      <div className={styles.logoBox}>
+        <div className={styles.logo} onClick={handleGoogleLogin}>
+          <img class="googlelogo" src="https://www.pngplay.com/wp-content/uploads/13/Google-Logo-PNG-Photo-Image.png"></img>
+        </div>
+        <div className={styles.logo} onClick={handleFacebookLogin}>
+          <img class="facebooklogo" src="https://t1.daumcdn.net/cfile/tistory/994EAB4F5D2565432F"></img>
+        </div>
+        <div className={styles.logo} onClick={handleTwitterLogin}>
+          <img class="twiterlogo" src="https://kr.seaicons.com/wp-content/uploads/2015/06/twitter-icon.png"></img>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "@/styles/Main.module.scss";
+import styles from "@/styles/main.module.scss";
 
 export default function Post({ list, setCurrentPost, setModalNo }) {
   return (

@@ -1,4 +1,4 @@
-import styles from "@/styles/Login.module.scss";
+import styles from "@/styles/login.module.scss";
 import {
   FacebookAuthProvider,
   GoogleAuthProvider,

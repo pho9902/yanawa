@@ -1,4 +1,4 @@
-import styles from "@/styles/Modal.module.scss";
+import styles from "@/styles/modal.module.scss";
 import Link from "next/link";
 import { GrClose } from "react-icons/gr";
 

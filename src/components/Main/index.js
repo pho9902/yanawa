@@ -1,4 +1,4 @@
-import styles from "@/styles/Main.module.scss";
+import styles from "@/styles/main.module.scss";
 import { getPosts } from "@/api/getList";
 import { useEffect, useState } from "react";
 import Post from "./Post";

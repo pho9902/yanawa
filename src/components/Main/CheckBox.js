@@ -1,4 +1,4 @@
-import styles from "@/styles/Write.module.scss";
+import styles from "@/styles/write.module.scss";
 
 export default function CheckBox({ idx, tag, onChange, isSub }) {
   return (

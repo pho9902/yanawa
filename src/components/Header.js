@@ -1,4 +1,4 @@
-import styles from "@/styles/Header.module.scss";
+import styles from "@/styles/header.module.scss";
 import { getUserInfo } from "@/utils/getUserInfo";
 import Link from "next/link";
 import { useEffect, useState } from "react";

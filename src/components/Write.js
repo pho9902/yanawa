@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "@/styles/Write.module.scss";
+import styles from "@/styles/write.module.scss";
 import { addPost } from "@/api/getList";
 import { getUserInfo } from "@/utils/getUserInfo";
 import { useRouter } from "next/router";
